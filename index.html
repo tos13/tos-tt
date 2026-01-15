@@ -236,9 +236,11 @@
                 </div>
             </div>
 
-            <!-- Right Column: Form (Original Single Card Style) -->
+            <!-- Right Column: Notices -->
             <div
                 class="glass-card rounded-3xl relative overflow-hidden w-full lg:w-1/2 p-8 flex flex-col justify-center">
+
+                <!-- Success View (Hidden) -->
                 <div id="success-view" class="hidden text-center py-12">
                     <div class="success-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
@@ -248,54 +250,10 @@
                         </svg>
                     </div>
                     <h3 class="text-3xl font-bold text-white mb-2">You're Registered!</h3>
-                    <p class="text-muted mb-8">Practice your backhand.</p><button onclick="resetForm()"
-                        class="link-btn">Register another colleague</button>
+                    <p class="text-muted mb-8">Practice your backhand.</p>
                 </div>
 
-                <!-- <form id="signup-form" class="relative z-10">
-                    <div style="margin-bottom: 1.5rem;">
-                        <h2 class="text-2xl font-bold text-white">Player Registration</h2>
-                        <p class="text-muted text-sm">Join the roster.</p>
-                    </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <div class="form-group"><label class="form-label">Name</label><input required name="name"
-                                type="text" class="form-input" placeholder="Enter your full name"></div>
-                        <div class="form-group"><label class="form-label">Department</label><select required
-                                name="department" class="form-input">
-                                <option value="" disabled selected>Select Department</option>
-                                <option value="The Legend Execs">The Legends - Executives</option>
-                                <option value="Production">Production</option>
-                                <option value="TMD">TMD</option>
-
-                                <option value="OPS">OPS</option>
-                                <option value="HR">HR</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Sales">Sales</option>
-                                <option value="Sales">Data Team</option>
-                                <option value="IT">IT</option>
-                            </select></div>
-                        <div class="form-group"><label class="form-label">Skill Level</label><input type="hidden"
-                                name="skill" id="skill-input" value="Dilettante">
-                            <div class="grid grid-cols-2 gap-3 mt-1"><button type="button" onclick="selectSkill('Pro')"
-                                    id="btn-pro" class="skill-btn group"><span class="font-bold">PRO</span><span
-                                        class="text-xl grayscale group-hover:grayscale-0 transition-all">🔥</span></button><button
-                                    type="button" onclick="selectSkill('Dilettante')" id="btn-noob"
-                                    class="skill-btn active group"><span class="font-bold">DILETTANTE</span><span
-                                        class="text-xl">🐣</span></button></div>
-                        </div>
-                    </div><button type="submit" id="submit-btn" class="submit-btn">Confirm Entry
-                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg></button>
-                </form> 
-            </div>
-        </div> -->
-
                 <!-- Notice Bulletin -->
-                <!-- <div class="w-full max-w-3xl mt-16 glass-card p-8 rounded-3xl animate-fadeIn"> -->
                 <div class="flex items-center gap-3 mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
                         stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -307,12 +265,12 @@
                     </svg>
                     <h3 class="text-xl font-bold text-white uppercase tracking-wider">Tournament Notices</h3>
                 </div>
+
                 <ul class="tt-list text-muted mt-4">
                     <li class="font-bold text-white mb-2">Matches will Begin on 19 HRS IST.</li>
                     <li class="text-white mb-2">As Tournament is 2 days, 1st day will only host 5 matches of the Phase 1
                         "Openers".</li>
-                    <li class="text-white mb-2">Pay the entry fees before 17:00 HRS IST to Ashutosh Rathore
-                        (In-Person)
+                    <li class="text-white mb-2">Pay the entry fees before 17:00 HRS IST to Ashutosh Rathore (In-Person)
                         Online/Cash</li>
                     <li><a href="smash-26-rulebook.pdf" target="_blank" class="link-btn"
                             style="color: var(--gold); text-decoration: none; border-bottom: 1px dashed var(--gold);">Read
@@ -330,41 +288,35 @@
                         </ul>
                     </li>
 
-                    <!-- <li>Players, don't worry — office timings will be adjusted to accommodate the event.</li> -->
                     <li>Easter Egg Prize - <strong>CLAIMED by Kushagra Chawla</strong> - <a href="easter-egg.webp"
-                            target="_blank" style="color: #22c55e;">PRIZE.JPG</a>
+                            target="_blank" style="color: #22c55e;">PRIZE.JPG</a></li>
                 </ul>
 
-
-                <!-- </div> -->
-
-
-                <footer class="text-muted text-sm text-center" style="margin-top: 4rem;">
+                <footer class="text-muted text-sm text-center mt-12 pt-8 border-t border-white/10">
                     <p>© 2026 Tesla Outsourcing Services.</p>
                 </footer>
             </div>
-            <!-- Easter Egg Modal -->
-            <div id="egg-modal"
-                class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black-80 backdrop-blur">
-                <div
-                    class="glass-card p-8 rounded-3xl max-w-sm w-full mx-4 relative animate-popIn text-center border border-gold-30">
-                    <button onclick="closeEggModal()"
-                        class="absolute top-4 right-4 text-white opacity-50 hover:opacity-100 font-bold text-xl z-10">&times;</button>
-                    <div class="text-6xl mb-4 mt-6">🥚</div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Legendary Find!</h3>
-                    <p class="text-muted mb-6 text-sm">You've unlocked the secret. Enter your name for the Hall of Fame.
-                    </p>
-                    <input type="text" id="egg-name-input" placeholder="Your Name"
-                        class="form-input mb-4 w-full text-center"
-                        style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
-                    <button onclick="submitEggName()" id="egg-submit-btn" class="submit-btn w-full justify-center">Claim
-                        Glory</button>
-                </div>
-            </div>
+        </div> <!-- Close Flex Container -->
+    </div> <!-- Close Main Container -->
+    <!-- Easter Egg Modal -->
+    <div id="egg-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black-80 backdrop-blur">
+        <div
+            class="glass-card p-8 rounded-3xl max-w-sm w-full mx-4 relative animate-popIn text-center border border-gold-30">
+            <button onclick="closeEggModal()"
+                class="absolute top-4 right-4 text-white opacity-50 hover:opacity-100 font-bold text-xl z-10">&times;</button>
+            <div class="text-6xl mb-4 mt-6">🥚</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Legendary Find!</h3>
+            <p class="text-muted mb-6 text-sm">You've unlocked the secret. Enter your name for the Hall of Fame.
+            </p>
+            <input type="text" id="egg-name-input" placeholder="Your Name" class="form-input mb-4 w-full text-center"
+                style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+            <button onclick="submitEggName()" id="egg-submit-btn" class="submit-btn w-full justify-center">Claim
+                Glory</button>
+        </div>
+    </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
-                defer></script>
-            <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 
