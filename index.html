@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="preconnect" href="https://script.google.com">
-    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="styles.css">
 
     <!-- iOS / Safari Optimization -->
@@ -33,19 +32,36 @@
 
     <div id="notification-area"></div>
 
+    <!-- Intro Overlay -->
+    <div id="intro-overlay" style="z-index: 9999;"
+        class="fixed inset-0 bg-black flex items-center justify-center transition-opacity duration-1000">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-widest uppercase animate-intro-text">
+            Let the game <span class="text-primary">begin</span>
+        </h1>
+    </div>
+
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" style="z-index: -1;">
         <div class="blob"></div>
         <div class="absolute inset-0 grid-bg"></div>
         <!-- Floating Elements -->
-        <img src="ping-pong.svg" class="tt-decoration float-1" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-2" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-3" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-4" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-5" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-6" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-4" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-5" alt="Ping Pong" aria-hidden="true" decoding="async">
-        <img src="ping-pong.svg" class="tt-decoration float-6" alt="Ping Pong" aria-hidden="true" decoding="async">
+        <img src="ping-pong.svg" class="tt-decoration float-1" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-2" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-3" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-4" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-5" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-6" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-4" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-5" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
+        <img src="ping-pong.svg" class="tt-decoration float-6" alt="Ping Pong" aria-hidden="true" decoding="async"
+            loading="lazy">
     </div>
 
     <div class="container layout-center min-h-screen py-24 relative z-10">
@@ -54,9 +70,10 @@
         <div class="text-center mb-12 lg:mb-16 animate-popIn px-4">
             <div class="flex justify-center items-center gap-6 mb-6">
                 <img id="main-logo" src="logo.svg" alt="Smash 26"
-                    class="w-32 h-auto cursor-pointer hover:scale-105 transition-transform easter-egg-logo">
+                    class="w-32 h-auto cursor-pointer hover:scale-105 transition-transform easter-egg-logo"
+                    loading="lazy">
                 <img src="logo-2.svg" alt="Sponsor Logo"
-                    class="w-32 h-auto hover:scale-105 transition-transform easter-egg-logo">
+                    class="w-32 h-auto hover:scale-105 transition-transform easter-egg-logo" loading="lazy">
             </div>
             <h1 class="text-gradient hover:scale-105 transition-transform cursor-default">SMASH <span
                     class="text-white">26</span></h1>
@@ -121,9 +138,31 @@
             </div>
             <p class="text-muted text-sm mt-4">Registration closed on <span class="text-white font-bold">14th Jan 2026,
                     5:00 PM IST</span></p>
+
+            <div class="mt-8 text-center animate-popIn">
+                <a href="tournament.html" class="submit-btn inline-flex items-center gap-2"
+                    style="display: inline-flex; text-decoration: none; max-width: 300px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 1 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17"></path>
+                        <path d="M14 14.66V17"></path>
+                        <path d="M12 2v7.5"></path>
+                        <path d="M12 17s-6-1.5-6-8c0-3.5 2.5-6 6-6s6 2.5 6 6c0 6.5-6 8-6 8z"></path>
+                    </svg>
+                    View Tournament Dashboard
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 w-full items-center justify-center">
+        <div class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-16 w-full items-center justify-center">
             <!-- Left Column: The Brief (Original Stack Style) -->
             <div class="flex flex-col gap-4 w-full lg:w-1/2">
                 <div class="flex items-center gap-2 mb-4">
@@ -269,39 +308,34 @@
                     <h3 class="text-xl font-bold text-white uppercase tracking-wider">Tournament Notices</h3>
                 </div>
                 <ul class="tt-list text-muted mt-4">
+                    <li class="font-bold text-white mb-2">Matches will Begin on 19 HRS IST.</li>
+                    <li class="text-white mb-2">As Tournament is 2 days, 1st day will only host 5 matches of the Phase 1
+                        "Openers".</li>
+                    <li class="text-white mb-2">Pay the entry fees before 17:00 HRS IST to Ashutosh Rathore
+                        (In-Person)
+                        Online/Cash</li>
                     <li><a href="smash-26-rulebook.pdf" target="_blank" class="link-btn"
                             style="color: var(--gold); text-decoration: none; border-bottom: 1px dashed var(--gold);">Read
                             Official Rule Book (Mandatory Read)</a></li>
-                    <li>Entry fees (₹200) to be collected after final team formation.</li>
-                    <li>Stay Tuned for more updates!</li>
-                    <li>Players, don't worry — office timings will be adjusted to accommodate the event. Each
-                        smasher plays
-                        solo, but the spirit of the game unites us all.</li>
+
+                    <li class="mt-4 mb-2">
+                        <strong class="text-gold text-lg">Prize Pool: ₹5,200</strong>
+                        <ul
+                            class="list-disc pl-6 mt-2 space-y-1 text-sm bg-white/5 p-3 rounded-lg border border-white/10">
+                            <li class="text-white">Main Tournament Winner: <span
+                                    class="text-green-400 font-bold">₹3,000</span></li>
+                            <li class="text-white">Runners Up: <span class="text-blue-400 font-bold">₹1,500</span></li>
+                            <li class="text-white">Consolation Winner: <span
+                                    class="text-amber-400 font-bold">₹700</span></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li>Players, don't worry — office timings will be adjusted to accommodate the event.</li> -->
                     <li>Easter Egg Prize - <strong>CLAIMED by Kushagra Chawla</strong> - <a href="easter-egg.webp"
                             target="_blank" style="color: #22c55e;">PRIZE.JPG</a>
                 </ul>
 
-                <div class="mt-8 text-center">
-                    <a href="tournament.html" class="submit-btn inline-flex items-center gap-2"
-                        style="display: inline-flex; text-decoration: none; max-width: 300px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                            <path d="M18 9h1.5a2.5 2.5 0 0 1 0-5H18"></path>
-                            <path d="M4 22h16"></path>
-                            <path d="M10 14.66V17"></path>
-                            <path d="M14 14.66V17"></path>
-                            <path d="M12 2v7.5"></path>
-                            <path d="M12 17s-6-1.5-6-8c0-3.5 2.5-6 6-6s6 2.5 6 6c0 6.5-6 8-6 8z"></path>
-                        </svg>
-                        View Tournament Dashboard
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
+
                 <!-- </div> -->
 
 
@@ -328,12 +362,9 @@
                 </div>
             </div>
 
-            <!-- Deferred Scripts for Speed -->
             <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
                 defer></script>
-            <script>
-                const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqGNDogxiRKAKIRCulNrpNqu3K0imQ7s0kmCXfEiYog6hRxEIx3940nbQ53RWUjVzg/exec", logos = document.querySelectorAll(".easter-egg-logo"); let clickTimer, clickCount = 0; function activateCreatorMode() { document.body.classList.add("creator-mode"); const e = document.getElementById("tournament-subtitle"); e.innerHTML = "You Found The Easter Egg<br> DESIGNED BY ASHUTOSH RATHORE", e.classList.add("text-gradient"); const t = document.getElementById("egg-modal"); if (t && t.classList.remove("hidden"), window.confetti) { const e = 3e3, t = Date.now() + e; !function e() { confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ["#ffd700", "#ffffff"] }), confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ["#ffd700", "#ffffff"] }), Date.now() < t && requestAnimationFrame(e) }() } } function closeEggModal() { document.getElementById("egg-modal").classList.add("hidden") } async function submitEggName() { const e = document.getElementById("egg-name-input"), t = document.getElementById("egg-submit-btn"), n = e.value.trim(); if (n) { t.disabled = !0, t.innerHTML = "Saving..."; try { await fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "register_easter_egg", name: n, timestamp: new Date }) }), showToast("Legendary status recorded! 🏆", "success"), closeEggModal(), window.confetti && confetti({ particleCount: 150, spread: 70, origin: { y: .6 }, colors: ["#ffd700", "#ffffff"] }) } catch (e) { console.error(e), showToast("Error saving. But you're still a legend.") } finally { t.disabled = !1, t.innerHTML = "Claim Glory" } } else showToast("Please enter your name!") } function selectSkill(e) { document.getElementById("skill-input").value = e; const t = document.getElementById("btn-pro"), n = document.getElementById("btn-noob"); "Pro" === e ? (t.classList.add("active"), t.querySelector("span:last-child").classList.remove("grayscale"), n.classList.remove("active"), n.querySelector("span:last-child").classList.add("grayscale")) : (n.classList.add("active"), n.querySelector("span:last-child").classList.remove("grayscale"), t.classList.remove("active"), t.querySelector("span:last-child").classList.add("grayscale")) } function showToast(e, t = "error") { const n = document.getElementById("notification-area"), o = document.createElement("div"); o.className = "toast " + ("error" === t ? "toast-error" : ""), o.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>${e}`, n.appendChild(o), setTimeout((() => { o.style.opacity = "0", setTimeout((() => o.remove()), 300) }), 3e3) } logos.forEach((e => { e.addEventListener("click", (() => { clickCount++, clearTimeout(clickTimer), clickTimer = setTimeout((() => { clickCount = 0 }), 2e3), clickCount >= 5 && (activateCreatorMode(), clickCount = 0) })) })); const LEGEND_NAMES = ["Prex", "Prachi", "Kuldeep", "Bhagwati", "Divya", "Ketan"], countDownDate = new Date("Jan 14, 2026 17:00:00").getTime(), x = setInterval((function () { const e = (new Date).getTime(), t = countDownDate - e, n = Math.floor(t / 864e5), o = Math.floor(t % 864e5 / 36e5), s = Math.floor(t % 36e5 / 6e4), i = Math.floor(t % 6e4 / 1e3); document.getElementById("days").innerText = n < 10 ? "0" + n : n, document.getElementById("hours").innerText = o < 10 ? "0" + o : o, document.getElementById("minutes").innerText = s < 10 ? "0" + s : s, document.getElementById("seconds").innerText = i < 10 ? "0" + i : i, t < 0 && (clearInterval(x), document.getElementById("countdown").innerHTML = "<div class='text-xl text-primary font-bold'>REGISTRATION CLOSED</div>") }), 1e3), form = document.getElementById("signup-form"); function resetForm() { document.getElementById("signup-form").reset(), selectSkill("Dilettante"), document.getElementById("signup-form").classList.remove("hidden"), document.getElementById("success-view").classList.add("hidden") } async function fetchPlayerCount() { document.getElementById("player-count-container"), document.getElementById("player-count-value"); try { const e = await fetch(`${GOOGLE_SCRIPT_URL}?t=${(new Date).getTime()}`), t = await e.text(); let n = 0; try { const e = JSON.parse(t); "success" !== e.status && void 0 === e.count || (n = e.count) } catch (e) { console.log("Backend returned text:", t); const o = t.match(/\d+/); o && (n = parseInt(o[0])) } if (n > 0) { const e = document.getElementById("player-count-value"); if ("--" === e.innerText) e.innerText = n; else { const t = parseInt(e.innerText), o = n; isNaN(t) || t === o ? isNaN(t) && (e.innerText = n) : animateValue(e, t, o, 1e3) } } } catch (e) { console.error("Failed to fetch player count:", e) } } function animateValue(e, t, n, o) { let s = null; const i = a => { s || (s = a); const c = Math.min((a - s) / o, 1); e.innerHTML = Math.floor(c * (n - t) + t), c < 1 && window.requestAnimationFrame(i) }; window.requestAnimationFrame(i) } form && form.addEventListener("submit", (async e => { e.preventDefault(); const t = form.department.value, n = form.name.value.trim(); if ("The Legend Execs" === t && !LEGEND_NAMES.some((e => n.toLowerCase().includes(e.toLowerCase())))) return void showToast("Only Legends allowed in this department!"); const o = document.getElementById("submit-btn"), s = o.innerHTML; o.disabled = !0, o.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">\n                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>\n                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>\n            </svg>Processing...'; const i = { name: n, department: t, skill: form.skill.value }; try { GOOGLE_SCRIPT_URL ? await fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(i) }) : await new Promise((e => setTimeout(e, 1500))), document.getElementById("signup-form").classList.add("hidden"), document.getElementById("success-view").classList.remove("hidden"), window.confetti && confetti({ particleCount: 150, spread: 70, origin: { y: .6 }, colors: ["#de424a", "#ffffff"] }) } catch (e) { console.error(e), alert("Something went wrong. Check console.") } finally { o.disabled = !1, o.innerHTML = s } })), fetchPlayerCount(), setInterval(fetchPlayerCount, 3e4);
-            </script>
+            <script src="script.js" defer></script>
 </body>
 
 

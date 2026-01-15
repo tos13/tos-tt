@@ -5,13 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smash 26 - Tournament Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- iOS / Safari Optimization -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Smash 26">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
 </head>
 
 <body class="min-h-screen relative overflow-x-hidden">
@@ -20,7 +30,7 @@
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" style="z-index: -1;">
         <div class="blob"></div>
         <div class="absolute inset-0 grid-bg"></div>
-        <img src="ping-pong.svg" class="tt-decoration float-1" style="opacity: 0.1;" alt="bg">
+        <img src="ping-pong.svg" class="tt-decoration float-1" style="opacity: 0.1;" alt="bg" loading="lazy">
     </div>
 
     <!-- Navigation -->
@@ -40,8 +50,10 @@
                     </div>
                 </div>
                 <div class="flex space-x-1 bg-white/5 p-1 rounded-lg border border-white/10">
+                    <button onclick="switchTab('teams')" id="btn-teams"
+                        class="tab-btn active px-3 py-1.5 text-sm font-medium rounded-md transition-all">Teams</button>
                     <button onclick="switchTab('schedule')" id="btn-schedule"
-                        class="tab-btn active px-3 py-1.5 text-sm font-medium rounded-md transition-all">Schedule</button>
+                        class="tab-btn px-3 py-1.5 text-sm font-medium rounded-md transition-all text-gray-400 hover:text-white hover:bg-white/5">Schedule</button>
                     <button onclick="switchTab('bracket')" id="btn-bracket"
                         class="tab-btn px-3 py-1.5 text-sm font-medium rounded-md transition-all text-gray-400 hover:text-white hover:bg-white/5">Brackets</button>
                     <button onclick="switchTab('rules')" id="btn-rules"
@@ -66,7 +78,7 @@
                 class="glass p-4 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-white/5 transition-colors">
                 <div class="text-green-400 mb-1 group-hover:scale-110 transition-transform"><i
                         class="fas fa-stopwatch"></i></div>
-                <div class="text-2xl font-bold text-white">4.5 Hrs</div>
+                <div class="text-2xl font-bold text-white">~ 6 Hrs</div>
                 <div class="text-xs text-muted uppercase tracking-wide">Est. Duration</div>
             </div>
             <div
@@ -86,7 +98,7 @@
         </div>
 
         <!-- ==================== SCHEDULE TAB ==================== -->
-        <div id="tab-schedule" class="tab-content block animate-fadeIn">
+        <div id="tab-schedule" class="tab-content hidden animate-fadeIn">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
                     Order of Play</h2>
@@ -386,9 +398,11 @@
                         </div>
 
                     </div>
+
                 </div>
             </div>
 
+            <!-- Consolation Bracket (Moved) -->
             <div class="mb-12">
                 <h2 class="text-xl font-bold text-amber-500 mb-6 border-b border-white/10 pb-4">Consolation (Plate)
                     Bracket</h2>
@@ -462,6 +476,291 @@
 
         </div>
 
+        <!-- TEAMS TAB -->
+        <div id="tab-teams" class="tab-content block animate-fadeIn">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Teams 1-13 generated from Teams.md -->
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 1</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T1</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Kuldeep Gajjar</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium text-opacity-50">REDACTED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 2</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T2</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Vishakh Dalwadi</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Krisha Bhatt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 3</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T3</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Shubham Parmar</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Anushree Mandwekar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 4</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T4</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Shravan Pingale</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Pratham Gandhi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 5</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T5</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Kushagra Chawla</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Harshil Patel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 6</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T6</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Joel Jose</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Rahemuddin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 7</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T7</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Gopal Singh Shekhawat</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Devendra Koshti</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 8</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T8</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Nisha Jyoti</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Dharmik Sheth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 9</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T9</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Prateek Verma</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Aditya Chaubey</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 10</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T10</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Prex Poojara</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Ashutosh Rathore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 11</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T11</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Neelkanth Joshi</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Rahul Rajput</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 12</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T12</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Jayanti Lal Prajapati</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Dipen Bhuva</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 hover:border-gold/30 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white group-hover:text-gold transition-colors">Team 13</h3>
+                        <span class="bg-white/10 text-xs px-2 py-1 rounded text-muted">T13</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold border border-red-500/30">
+                                P</div>
+                            <span class="text-white font-medium">Rajdeep Singh</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold border border-blue-500/30">
+                                D</div>
+                            <span class="text-white font-medium">Vivek Joshi</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        </div>
+
         <!-- ==================== RULES TAB ==================== -->
         <div id="tab-rules" class="tab-content hidden animate-fadeIn">
             <h2 class="text-2xl font-bold text-white mb-6">Rules & Management</h2>
@@ -484,7 +783,7 @@
                     </div>
                 </div>
 
-                <div class="glass p-5 rounded-xl border-l-4 border-l-yellow-500/50">
+                <!-- <div class="glass p-5 rounded-xl border-l-4 border-l-yellow-500/50">
                     <div class="flex items-start gap-3">
                         <div class="bg-yellow-500/20 p-2 rounded-full text-yellow-500"><i class="fas fa-bolt"></i></div>
                         <div>
@@ -493,7 +792,7 @@
                                 single <strong>sudden death point</strong>. No "win by 2".</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -505,24 +804,7 @@
         <p>© 2026 Tesla Outsourcing Services.</p>
     </footer>
 
-    <script>
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById('tab-' + tabName).classList.remove('hidden');
-
-            const buttons = ['schedule', 'bracket', 'rules'];
-            buttons.forEach(btn => {
-                const el = document.getElementById('btn-' + btn);
-                if (btn === tabName) {
-                    el.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-white/5');
-                    el.classList.add('active'); // active class handles the gold styling defined in CSS
-                } else {
-                    el.classList.remove('active');
-                    el.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-white/5');
-                }
-            });
-        }
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
