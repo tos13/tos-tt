@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash 26 - Tournament Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="min-h-screen relative overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" style="z-index: -1;">
+        <div class="blob"></div>
+        <div class="absolute inset-0 grid-bg"></div>
+        <img src="ping-pong.svg" class="tt-decoration float-1" style="opacity: 0.1;" alt="bg">
+    </div>
+
+    <!-- Navigation -->
+    <header class="border-b border-white/10 sticky top-0 z-50 backdrop-blur-md bg-black/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="hover:opacity-80 transition-opacity">
+                        <div
+                            class="bg-gradient-to-br from-red-600 to-red-800 text-white p-2 rounded-lg shadow-lg shadow-red-900/20">
+                            <i class="fas fa-trophy text-lg"></i>
+                        </div>
+                    </a>
+                    <div>
+                        <h1 class="font-bold text-xl leading-tight tracking-tight">Tournament Manager</h1>
+                        <p class="text-xs text-muted hidden sm:block">13 Teams • 1 Table • ~4.5 Hours</p>
+                    </div>
+                </div>
+                <div class="flex space-x-1 bg-white/5 p-1 rounded-lg border border-white/10">
+                    <button onclick="switchTab('schedule')" id="btn-schedule"
+                        class="tab-btn active px-3 py-1.5 text-sm font-medium rounded-md transition-all">Schedule</button>
+                    <button onclick="switchTab('bracket')" id="btn-bracket"
+                        class="tab-btn px-3 py-1.5 text-sm font-medium rounded-md transition-all text-gray-400 hover:text-white hover:bg-white/5">Brackets</button>
+                    <button onclick="switchTab('rules')" id="btn-rules"
+                        class="tab-btn px-3 py-1.5 text-sm font-medium rounded-md transition-all text-gray-400 hover:text-white hover:bg-white/5">Rules</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10 block">
+
+        <!-- DASHBOARD METRICS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div
+                class="glass p-4 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-white/5 transition-colors">
+                <div class="text-blue-400 mb-1 group-hover:scale-110 transition-transform"><i
+                        class="fas fa-table-tennis"></i></div>
+                <div class="text-2xl font-bold text-white">1 Table</div>
+                <div class="text-xs text-muted uppercase tracking-wide">Infrastructure</div>
+            </div>
+            <div
+                class="glass p-4 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-white/5 transition-colors">
+                <div class="text-green-400 mb-1 group-hover:scale-110 transition-transform"><i
+                        class="fas fa-stopwatch"></i></div>
+                <div class="text-2xl font-bold text-white">4.5 Hrs</div>
+                <div class="text-xs text-muted uppercase tracking-wide">Est. Duration</div>
+            </div>
+            <div
+                class="glass p-4 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-white/5 transition-colors">
+                <div class="text-orange-400 mb-1 group-hover:scale-110 transition-transform"><i
+                        class="fas fa-users"></i></div>
+                <div class="text-2xl font-bold text-white">13 Teams</div>
+                <div class="text-xs text-muted uppercase tracking-wide">Format</div>
+            </div>
+            <div
+                class="glass p-4 rounded-xl flex flex-col justify-center items-center text-center group hover:bg-white/5 transition-colors">
+                <div class="text-purple-400 mb-1 group-hover:scale-110 transition-transform"><i
+                        class="fas fa-list-ol"></i></div>
+                <div class="text-2xl font-bold text-white">16</div>
+                <div class="text-xs text-muted uppercase tracking-wide">Total Matches</div>
+            </div>
+        </div>
+
+        <!-- ==================== SCHEDULE TAB ==================== -->
+        <div id="tab-schedule" class="tab-content block animate-fadeIn">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                    Order of Play</h2>
+                <!-- <button onclick="window.print()" class="text-sm text-muted hover:text-white no-print"><i class="fas fa-print mr-1"></i> Print</button> -->
+            </div>
+
+            <!-- Phases -->
+            <div class="space-y-8">
+                <!-- Phase 1 -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span
+                            class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Phase
+                            1</span>
+                        <h3 class="text-lg font-semibold text-white">The Openers</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- M1 -->
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 1</span><span
+                                    class="font-semibold text-white">Team 4 vs Team 5</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main R1</span>
+                        </div>
+                        <!-- M2 -->
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 2</span><span
+                                    class="font-semibold text-white">Team 6 vs Team 7</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main R1</span>
+                        </div>
+                        <!-- M3 -->
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 3</span><span
+                                    class="font-semibold text-white">Team 8 vs Team 9</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main R1</span>
+                        </div>
+                        <!-- M4 -->
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 4</span><span
+                                    class="font-semibold text-white">Team 10 vs Team 11</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main R1</span>
+                        </div>
+                        <!-- M5 -->
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 5</span><span
+                                    class="font-semibold text-white">Team 12 vs Team 13</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main R1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span
+                            class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Phase
+                            2</span>
+                        <h3 class="text-lg font-semibold text-white">Qualifiers</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-amber-500/70 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-amber-400 font-bold block mb-1">MATCH 6</span><span
+                                    class="font-semibold text-white">Loser M4 vs Loser M5</span></div>
+                            <span class="text-xs bg-amber-500/10 text-amber-200 px-2 py-1 rounded">Plate Play-In</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 7</span><span
+                                    class="font-semibold text-white">Team 1 vs Winner M1</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main QF 1</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 8</span><span
+                                    class="font-semibold text-white">Team 2 vs Winner M2</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main QF 2</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 9</span><span
+                                    class="font-semibold text-white">Team 3 vs Winner M3</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main QF 3</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-blue-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-muted font-bold block mb-1">MATCH 10</span><span
+                                    class="font-semibold text-white">Winner M4 vs Winner M5</span></div>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-300">Main QF 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span
+                            class="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Phase
+                            3</span>
+                        <h3 class="text-lg font-semibold text-white">Semi-Finals</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-amber-500/70 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-amber-400 font-bold block mb-1">MATCH 11</span><span
+                                    class="font-semibold text-white">Loser M1 vs Loser M2</span></div>
+                            <span class="text-xs bg-amber-500/10 text-amber-200 px-2 py-1 rounded">Plate Semi A</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-amber-500/70 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-amber-400 font-bold block mb-1">MATCH 12</span><span
+                                    class="font-semibold text-white">Loser M3 vs Winner M6</span></div>
+                            <span class="text-xs bg-amber-500/10 text-amber-200 px-2 py-1 rounded">Plate Semi B</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-purple-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-purple-400 font-bold block mb-1">MATCH 13</span><span
+                                    class="font-semibold text-white">Winner QF 1 vs Winner QF 2</span></div>
+                            <span class="text-xs bg-purple-500/10 text-purple-200 px-2 py-1 rounded">Main Semi 1</span>
+                        </div>
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-purple-500 hover:bg-white/5 transition-colors">
+                            <div><span class="text-xs text-purple-400 font-bold block mb-1">MATCH 14</span><span
+                                    class="font-semibold text-white">Winner QF 3 vs Winner QF 4</span></div>
+                            <span class="text-xs bg-purple-500/10 text-purple-200 px-2 py-1 rounded">Main Semi 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span
+                            class="bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Phase
+                            4</span>
+                        <h3 class="text-lg font-semibold text-white">Finals</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div
+                            class="glass p-4 rounded-xl flex justify-between items-center border-l-4 border-l-amber-500 shadow-lg shadow-amber-900/20">
+                            <div><span class="text-xs text-amber-500 font-bold block mb-1">MATCH 15 (Plate
+                                    Final)</span><span class="font-bold text-lg text-white">Winner SA vs Winner
+                                    SB</span></div>
+                            <i class="fas fa-medal text-amber-500 text-xl"></i>
+                        </div>
+                        <div
+                            class="glass p-6 rounded-xl flex justify-between items-center border-l-4 border-l-blue-600 shadow-lg shadow-blue-900/20 border border-white/10">
+                            <div><span class="text-xs text-blue-400 font-bold block mb-1">MATCH 16 (Grand
+                                    Final)</span><span class="font-black text-2xl text-white">Winner S1 vs Winner
+                                    S2</span><span class="text-xs text-muted block mt-1">Best of 5 Sets</span></div>
+                            <i class="fas fa-trophy text-gold text-3xl drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== BRACKET TAB ==================== -->
+        <div id="tab-bracket" class="tab-content hidden animate-fadeIn">
+
+            <div class="mb-8">
+                <h2
+                    class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-6 border-b border-white/10 pb-4">
+                    Championship Bracket</h2>
+
+                <div class="overflow-x-auto bracket-scroll pb-6">
+                    <div class="bracket-container min-h-[600px] min-w-[900px]">
+
+                        <!-- ROUND 1 -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Round 1
+                            </div>
+
+                            <!-- PAIR 1 -->
+                            <div class="match-pair">
+                                <div class="match-card opacity-50">
+                                    <div class="text-[10px] font-bold text-blue-400">SEED 1</div>
+                                    <div class="font-bold text-sm text-white">Team 1</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-blue-400">MATCH 1</div>
+                                    <div class="text-xs text-white">Team 4</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Team 5</div>
+                                </div>
+                            </div>
+
+                            <!-- PAIR 2 -->
+                            <div class="match-pair">
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-blue-400">MATCH 2</div>
+                                    <div class="text-xs text-white">Team 6</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Team 7</div>
+                                </div>
+                                <div class="match-card opacity-50">
+                                    <div class="text-[10px] font-bold text-blue-400">SEED 2</div>
+                                    <div class="font-bold text-sm text-white">Team 2</div>
+                                </div>
+                            </div>
+
+                            <!-- PAIR 3 -->
+                            <div class="match-pair">
+                                <div class="match-card opacity-50">
+                                    <div class="text-[10px] font-bold text-blue-400">SEED 3</div>
+                                    <div class="font-bold text-sm text-white">Team 3</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-blue-400">MATCH 3</div>
+                                    <div class="text-xs text-white">Team 8</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Team 9</div>
+                                </div>
+                            </div>
+
+                            <!-- PAIR 4 -->
+                            <div class="match-pair">
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-blue-400">MATCH 4</div>
+                                    <div class="text-xs text-white">Team 10</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Team 11</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-blue-400">MATCH 5</div>
+                                    <div class="text-xs text-white">Team 12</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Team 13</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QUARTER FINALS -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Quarter
+                                Finals</div>
+
+                            <!-- QF 1 & 2 feed into SF 1 -->
+                            <div class="match-pair">
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-purple-400">MATCH 7 (QF1)</div>
+                                    <div class="text-xs font-bold text-white">Team 1</div>
+                                    <div class="text-xs text-muted">vs Winner M1</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-purple-400">MATCH 8 (QF2)</div>
+                                    <div class="text-xs font-bold text-white">Team 2</div>
+                                    <div class="text-xs text-muted">vs Winner M2</div>
+                                </div>
+                            </div>
+
+                            <!-- QF 3 & 4 feed into SF 2 -->
+                            <div class="match-pair">
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-purple-400">MATCH 9 (QF3)</div>
+                                    <div class="text-xs font-bold text-white">Team 3</div>
+                                    <div class="text-xs text-muted">vs Winner M3</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-purple-400">MATCH 10 (QF4)</div>
+                                    <div class="text-xs font-bold text-white">Winner M4</div>
+                                    <div class="text-xs text-muted">vs Winner M5</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEMI FINALS -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Semi
+                                Finals</div>
+
+                            <div class="match-pair">
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-indigo-400">MATCH 13 (SF1)</div>
+                                    <div class="text-xs font-bold text-white">Winner QF1</div>
+                                    <div class="text-xs text-muted">vs Winner QF2</div>
+                                </div>
+                                <div class="match-card">
+                                    <div class="text-[10px] font-bold text-indigo-400">MATCH 14 (SF2)</div>
+                                    <div class="text-xs font-bold text-white">Winner QF3</div>
+                                    <div class="text-xs text-muted">vs Winner QF4</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FINAL -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Grand
+                                Final</div>
+                            <div class="flex flex-col justify-center h-full">
+                                <div class="match-card border-blue-500 border-2 shadow-lg h-24 bg-blue-500/10">
+                                    <div class="text-xs font-bold text-blue-400 text-center mb-1">MATCH 16</div>
+                                    <div class="text-lg font-black text-center text-white">Winner SF1</div>
+                                    <div class="text-xs text-center text-muted">vs</div>
+                                    <div class="text-lg font-black text-center text-white">Winner SF2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="text-xl font-bold text-amber-500 mb-6 border-b border-white/10 pb-4">Consolation (Plate)
+                    Bracket</h2>
+                <div
+                    class="overflow-x-auto bracket-scroll pb-6 bg-amber-900/10 p-4 rounded-xl border border-amber-500/20">
+                    <div class="bracket-container min-h-[400px] min-w-[700px]">
+                        <!-- PLATE ROUND 1 -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">
+                                Qualifier</div>
+
+                            <div class="match-pair">
+                                <div class="match-card opacity-70">
+                                    <div class="text-[10px] font-bold text-muted">ENTRY</div>
+                                    <div class="text-xs font-bold text-white">Loser M1</div>
+                                </div>
+                                <div class="match-card opacity-70">
+                                    <div class="text-[10px] font-bold text-muted">ENTRY</div>
+                                    <div class="text-xs font-bold text-white">Loser M2</div>
+                                </div>
+                            </div>
+
+                            <div class="match-pair">
+                                <div class="match-card opacity-70">
+                                    <div class="text-[10px] font-bold text-muted">ENTRY</div>
+                                    <div class="text-xs font-bold text-white">Loser M3</div>
+                                </div>
+                                <div class="match-card border-amber-500/50">
+                                    <div class="text-[10px] font-bold text-amber-500">MATCH 6 (Play-In)</div>
+                                    <div class="text-xs text-white">Loser M4</div>
+                                    <div class="text-xs border-t border-white/20 mt-1 pt-1 text-white">Loser M5</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PLATE SEMIS -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Plate
+                                Semis</div>
+
+                            <div class="match-pair">
+                                <div class="match-card border-amber-500/50">
+                                    <div class="text-[10px] font-bold text-amber-500">MATCH 11 (Semi A)</div>
+                                    <div class="text-xs font-bold text-white">Loser M1</div>
+                                    <div class="text-xs text-muted">vs Loser M2</div>
+                                </div>
+                                <div class="match-card border-amber-500/50">
+                                    <div class="text-[10px] font-bold text-amber-500">MATCH 12 (Semi B)</div>
+                                    <div class="text-xs font-bold text-white">Loser M3</div>
+                                    <div class="text-xs text-muted">vs Winner M6</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PLATE FINAL -->
+                        <div class="bracket-round">
+                            <div class="text-center text-xs font-bold text-muted mb-4 uppercase tracking-widest">Plate
+                                Final</div>
+                            <div class="flex flex-col justify-center h-full">
+                                <div class="match-card border-amber-500 border-2 shadow-lg h-24 bg-amber-600/10">
+                                    <div class="text-xs font-bold text-amber-500 text-center mb-1">MATCH 15</div>
+                                    <div class="text-lg font-black text-center text-white">Winner SA</div>
+                                    <div class="text-xs text-center text-muted">vs</div>
+                                    <div class="text-lg font-black text-center text-white">Winner SB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== RULES TAB ==================== -->
+        <div id="tab-rules" class="tab-content hidden animate-fadeIn">
+            <h2 class="text-2xl font-bold text-white mb-6">Rules & Management</h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+
+
+                <div class="glass p-5 rounded-xl border-l-4 border-l-blue-500/50">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-500/20 p-2 rounded-full text-blue-500"><i class="fas fa-table-tennis"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white">Match Format</h3>
+                            <ul class="list-disc list-inside mt-1 text-sm text-muted space-y-1">
+                                <li><strong>Regular Matches:</strong> Best of 3 sets (11 pts).</li>
+                                <li><strong>Finals Only:</strong> Best of 5 sets.</li>
+                                <li><strong>Warm-up:</strong> Strict 2 minute limit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-xl border-l-4 border-l-yellow-500/50">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-yellow-500/20 p-2 rounded-full text-yellow-500"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3 class="font-bold text-white">Golden Point Rule</h3>
+                            <p class="text-sm text-muted mt-1">If the score reaches <strong>10-10</strong>, play a
+                                single <strong>sudden death point</strong>. No "win by 2".</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted text-sm text-center py-8 relative z-10 block">
+        <p>© 2026 Tesla Outsourcing Services.</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            const buttons = ['schedule', 'bracket', 'rules'];
+            buttons.forEach(btn => {
+                const el = document.getElementById('btn-' + btn);
+                if (btn === tabName) {
+                    el.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-white/5');
+                    el.classList.add('active'); // active class handles the gold styling defined in CSS
+                } else {
+                    el.classList.remove('active');
+                    el.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-white/5');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
